@@ -9,15 +9,9 @@
 <body>
     <!-- Navbar -->
     <nav>
-        <button id="feedback-button" onclick="openFeedbackForm()">Enviar Feedback</button>
-        <h1>Desliza e Bebe</h1>
-        <label class="switch">
-            <input type="checkbox" id="dark-mode-toggle">
-            <span class="slider round"></span>
-          </label>
-        
+        <h1>Desliza e Bebe</h1>        
     </nav>
-
+    <button id="feedback-button" onclick="openFeedbackForm()">Enviar Feedback</button>
     <!-- Conteúdo Principal -->
     <div class="container-principal">
         <!-- Carta -->
@@ -32,7 +26,10 @@
                 <!-- Frase "Deslize a carta" -->
         <p id="instruction" class="blink">DESLIZE A CARTA</p>
     </div>
-
+    <label class="switch">
+        <input type="checkbox" id="dark-mode-toggle">
+        <span class="slider round"></span>
+      </label>
     <script src="script.js"></script>
 </body>
 </html>
