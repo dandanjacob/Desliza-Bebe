@@ -30,11 +30,11 @@ nav {
     width: 100%;
     background-color: var(--verde-limao);
     color: white;
-    padding: 10px 0;
-    text-align: center;
-    align-items: center; /* Alinha verticalmente */
-    justify-content: space-between; /* Distribui os itens */
+    padding: 10px 20px;
+    align-items: center;
+    justify-content: space-between; /* Distribui os itens com espaço entre eles */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative; /* Adicionado para garantir que o título seja posicionado corretamente */
 }
 
 nav h1 {
@@ -44,6 +44,7 @@ nav h1 {
     position: absolute; /* Posiciona o título absolutamente */
     left: 50%; /* Move o título para o meio */
     transform: translateX(-50%); /* Centraliza o título */
+    white-space: nowrap; /* Evita que o título quebre em várias linhas */
 }
 
 nav button {
@@ -53,6 +54,7 @@ nav button {
     cursor: pointer;
     font-size: 16px;
     padding: 5px 10px;
+    z-index: 1; /* Garante que o botão fique acima do título */
 }
 
 /* Container Principal */

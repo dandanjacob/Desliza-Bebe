@@ -12,7 +12,7 @@ const challenges = [
     "Ligue para a sua mãe e pergunte o que é gouinage ou beba 2 shots.",
     "Revele um personagem de desenho animado que te deixa excitado ou beba 1 shot.",
     "Faça um 'Eu nunca' pesado. Escolha alguém que já tenha feito a loucura para explicar como foi. Se ela não explicar, os dois bebem.",
-    ""
+
 ];
 
 const cardElement = document.getElementById('card');
@@ -147,3 +147,45 @@ toggleButton.addEventListener("change", () => {
 function openFeedbackForm() {
     window.open("https://docs.google.com/forms/d/e/1FAIpQLSf9SQTgdGrMt79zPf2Bezhqf4TlgJEHGd3she2Q3jZ4vOSJ4Q/viewform?usp=header", "_blank");
 }
+
+// Adiciona eventos de toque para dispositivos móveis
+cardElement.addEventListener('touchstart', (e) => {
+    isDragging = true;
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    cardElement.style.transition = 'none';
+    resetInactivityTimer();
+});
+
+cardElement.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+
+    offsetX = e.touches[0].clientX - startX;
+    offsetY = e.touches[0].clientY - startY;
+
+    cardElement.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+    resetInactivityTimer();
+});
+
+cardElement.addEventListener('touchend', () => {
+    if (!isDragging) return;
+
+    isDragging = false;
+
+    if (Math.abs(offsetX) > 50 || Math.abs(offsetY) > 50) {
+        cardElement.style.transition = 'transform 0.5s ease';
+        const directionX = offsetX > 0 ? 200 : -200;
+        const directionY = offsetY > 0 ? 200 : -200;
+        cardElement.style.transform = `translate(${directionX}px, ${directionY}px) rotate(30deg)`;
+
+        setTimeout(() => {
+            drawNewChallenge();
+            cardElement.style.transition = 'none';
+            cardElement.style.transform = 'translate(0, 0) rotate(0)';
+        }, 500);
+    } else {
+        cardElement.style.transform = 'translate(0, 0)';
+    }
+
+    resetInactivityTimer();
+});
