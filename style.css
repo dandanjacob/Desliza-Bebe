@@ -1,0 +1,236 @@
+/* Cores Principais */
+:root {
+    --rosa-vibrante: #FF007F;
+    --azul-eletrico: #00BFFF;
+    --amarelo-brilhante: #FFD700;
+    --roxo-neon: #9400D3;
+    --verde-limao: #32CD32;
+    --branco: #ffffff;
+    --preto: #000;
+    --off-white: #cccccc;
+}
+
+/* Estilos Gerais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--off-white);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Navbar */
+nav {
+    display: flex;
+    width: 100%;
+    background-color: var(--verde-limao);
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    align-items: center; /* Alinha verticalmente */
+    justify-content: space-between; /* Distribui os itens */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav h1 {
+    margin: 0;
+    font-size: 24px;
+    text-align: center;
+    position: absolute; /* Posiciona o título absolutamente */
+    left: 50%; /* Move o título para o meio */
+    transform: translateX(-50%); /* Centraliza o título */
+}
+
+nav button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px 10px;
+}
+
+/* Container Principal */
+.container-principal {
+    position: relative;
+    width: 5cm;
+    height: 9cm;
+    text-align: center;
+    background-color: None;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 50px;
+    box-sizing: border-box;
+}
+
+/*----------------------------------- CARTA ----------------------------------- /*
+/* Verso da carta (fixo, atrás da .card) */
+.card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Usa 100% da largura do contêiner */
+    height: 100%; /* Usa 100% da altura do contêiner */
+    background-color: var(--branco);
+    background-image: url('imagens/logo-carta-branca.png'); /* Adiciona a imagem */
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px; /* Mesmo arredondamento */
+    outline: 25px solid var(--branco); /* Mantém o contorno */
+    z-index: 0; /* Garante que fique atrás da carta */
+}
+
+/* Frente da carta (movível) */
+.card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Usa 100% da largura do contêiner */
+    height: 100%; /* Usa 100% da altura do contêiner */
+    background-color: var(--rosa-vibrante);
+    border-radius: 15px; /* Mesmo arredondamento */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: 25px solid var(--branco);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: grab;
+    user-select: none;
+    transition: transform 0.5s ease, background-color 0.5s ease;
+    z-index: 1; /* Garante que fique sobre a .card-back */
+    padding: 0; /* Remove qualquer espaçamento extra */
+    box-sizing: border-box; /* Garante que largura e altura incluam padding e bordas */
+}
+
+
+
+/* Texto dentro da carta */
+#challenge {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--branco); /* Texto branco */
+    margin: 0;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+/* Frase "Deslize a carta" */
+#instruction {
+    font-size: 18px;
+    color: var(--roxo-neon);
+    margin-top: 45px; /* Ajusta a posição */
+    opacity: 0; /* Inicialmente invisível */
+    transition: opacity 0.5s ease;
+    position: relative; /* Garante que fique acima */
+    z-index: 2; /* Coloca a frase acima da carta */
+    text-align: center;
+}
+
+
+/* Mostrar a frase */
+#instruction.visible {
+    opacity: 1;
+}
+
+/*----------------------------------- FRASE DE INATIVAÇÃO ----------------------------------- /*
+/* Animação de piscar */
+.blink {
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+    0%, 50%, 100% {
+        opacity: 1;
+    }
+    25%, 75% {
+        opacity: 0;
+    }
+}
+
+/*----------------------------------- DARK MODE ----------------------------------- /*
+/* Estilo básico para o contêiner do switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 25px;
+    margin-left: auto;
+}
+  
+/* Esconde o checkbox padrão */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 25px;
+}
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 17px;
+    width: 17px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+/* Quando o switch está ativado */
+input:checked + .slider {
+    background-color: var(--preto);
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+  
+  /* Estilo para o slider redondo */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+/* Estilos para Dark Mode */
+.dark-mode {
+    background-color: var(--preto) !important;
+    color: var(--preto) !important;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

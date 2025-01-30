@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desliza e Bebe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <button id="feedback-button" onclick="openFeedbackForm()">Enviar Feedback</button>
+        <h1>Desliza e Bebe</h1>
+        <label class="switch">
+            <input type="checkbox" id="dark-mode-toggle">
+            <span class="slider round"></span>
+          </label>
+        
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <div class="container-principal">
+        <!-- Carta -->
+        <div id = "card-back" class="card-back"></div> <!-- Imagem fixa abaixo -->
+        <div id="card" class="card">
+            <p id="challenge"></p> <!-- Texto do desafio será preenchido pelo JavaScript -->
+        </div>
+    </div>
+    </div>
+    
+    <div>
+                <!-- Frase "Deslize a carta" -->
+        <p id="instruction" class="blink">DESLIZE A CARTA</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
